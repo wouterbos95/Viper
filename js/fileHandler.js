@@ -1,4 +1,3 @@
-
 function handleFiles(files) {
 	// Check for the various File API support.
 	if (window.FileReader) {
@@ -26,12 +25,16 @@ function loadHandler(event) {
 function processData(csv) {
 	var allTextLines = csv.split(/\r\n|\n/);
 	var lines = [];
-	while (allTextLines.length) {
-		lines.push(allTextLines.shift().split(';'));
+	header = [];
+	header = allTextLines[0].split(';'); // to safe the header-titles, so you can select target
+	
+	for(var l=1; l<allTextLines.length ;l++){
+		lines.push(allTextLines[l].split(';')); 
 	}
 	data = lines;
 	data = transpose();
 	console.log(data);
+	showSelector();
 	drawOutput();
 }
 
@@ -76,7 +79,21 @@ function transpose (){
 
 function drawOutput(){
 	//Clear previous data
-	document.getElementById("output").innerHTML = "";
+	document.getElementById("header").innerHTML = "";
+	// first print the header
+	document.getElementById("header").innerHTML = "<h2>Header:</h2><br>";
+
+	var table = document.createElement("table");
+	var r = table.insertRow(0); 
+	var c = r.insertCell(0);
+	for (var i = 0; i < header.length; i++) {	
+		c.appendChild(document.createTextNode(header[i]));
+	}
+	document.getElementById("header").appendChild(table);
+
+	//second the data
+	document.getElementById("data").innerHTML = "<h2>Data:</h2><br>";
+	
 	var table = document.createElement("table");
 	for (var i = 0; i < data.length; i++) {
 		var row = table.insertRow(-1);
@@ -85,7 +102,39 @@ function drawOutput(){
 			firstNameCell.appendChild(document.createTextNode(data[i][j]));
 		}
 	}
-	document.getElementById("output").appendChild(table);
+	document.getElementById("data").appendChild(table);
+	
+	document.getElementById("target").innerHTML = "";
+	// first print the header
+	document.getElementById("target").innerHTML = "<h2>Target:</h2><br>";
+
+	var table = document.createElement("table");
+	var r = table.insertRow(0); 
+	var c = r.insertCell(0);
+	for (var i = 0; i < target.length; i++) {	
+		c.appendChild(document.createTextNode(target[i]));
+	}
+	document.getElementById("target").appendChild(table);
+}
+
+function showSelector(){
+	document.getElementById("info").innerHTML = "<select id='selector' onchange='selectTarget(value)'></select>";
+	choice = document.getElementById('selector');
+	choice.add(new Option("Choice a target"));
+	for (var i = 0; i < header.length; i++) {	
+    opt = new Option;
+		opt.value = header[i];
+		opt.text = header[i];
+		choice.add(opt);
+	}
+}
+
+function selectTarget(value){
+	target = [];
+	index = header.indexOf(value);
+	target = data[index];
+	data.splice(index, 1); 
+	drawOutput();
 }
 
  
