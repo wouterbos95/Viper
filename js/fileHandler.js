@@ -1,3 +1,7 @@
+header;
+data;
+target;
+
 function handleFiles(files) {
 	// Check for the various File API support.
 	if (window.FileReader) {
@@ -35,7 +39,6 @@ function processData(csv) {
 	data = transpose();
 	console.log(data);
 	showSelector();
-	drawOutput();
 }
 
 function errorHandler(evt) {
@@ -97,7 +100,7 @@ function drawOutput(){
 	var table = document.createElement("table");
 	for (var i = 0; i < data.length; i++) {
 		var row = table.insertRow(-1);
-		for (var j = 0; j < data[i].length; j++) {
+		for (var j = 0; j < data[i].length-1; j++) {
 			var firstNameCell = row.insertCell(-1);
 			firstNameCell.appendChild(document.createTextNode(data[i][j]));
 		}
@@ -134,7 +137,11 @@ function selectTarget(value){
 	index = header.indexOf(value);
 	target = data[index];
 	data.splice(index, 1); 
-	drawOutput();
+	var temp = "Selected target: <b>";
+	temp += value;
+	temp += "</b>";
+	document.getElementById("info").innerHTML = temp;
+	//drawOutput();
 }
 
  
