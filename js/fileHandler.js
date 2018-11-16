@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 header;
 data;
 target;
+=======
+function handleFiles(files) {
+	// Check for the various File API support.
+	if (window.FileReader) {
+		// FileReader are supported.
+		getAsText(files[0]);
+	} else {
+		alert('FileReader are not supported in this browser.');
+	}
+}
+>>>>>>> parent of 5af9d36... fix target selector
 
 function getAsText(fileToRead) {
 	var reader = new FileReader();
@@ -29,6 +41,7 @@ function processData(csv) {
 	data = transpose();
 	console.log(data);
 	showSelector();
+	drawOutput();
 }
 
 function errorHandler(evt) {
@@ -90,7 +103,7 @@ function drawOutput(){
 	var table = document.createElement("table");
 	for (var i = 0; i < data.length; i++) {
 		var row = table.insertRow(-1);
-		for (var j = 0; j < data[i].length-1; j++) {
+		for (var j = 0; j < data[i].length; j++) {
 			var firstNameCell = row.insertCell(-1);
 			firstNameCell.appendChild(document.createTextNode(data[i][j]));
 		}
@@ -127,10 +140,13 @@ function selectTarget(value){
 	index = header.indexOf(value);
 	target = data[index];
 	data.splice(index, 1); 
+<<<<<<< HEAD
 	var temp = "Selected target: <b>";
 	temp += value;
 	temp += "</b>";
 	document.getElementById("info").innerHTML = temp;
+=======
+>>>>>>> parent of 5af9d36... fix target selector
 	drawOutput();
 }
 
