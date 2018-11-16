@@ -26,12 +26,17 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
-			<div id="info">
-				<input type="file" id="csvFileInput" onchange="handleFiles(this.files)" accept=".csv">
-			</div>
-			<div id="header"></div>
-			<div id="data"></div>
-			<div id="target"></div>
+			<section id="viper">
+				<div id="info">
+					<input type="file" id="csvFileInput" accept=".csv">
+				</div>
+				<section id="main">
+					<div id="header"></div>
+					<div id="data"></div>
+					<div id="target"></div>
+				</section>
+			</section>
+				
 		</div>
     <?php include 'footer.php';?>
   
@@ -45,9 +50,15 @@
     <script src="./bootstrap-3.3.7/docs/assets/js/docs.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="./bootstrap-3.3.7/docs/assets/js/ie10-viewport-bug-workaround.js"></script>
+		
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min.js" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js" type="text/javascript"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>  
     
-    		<!-- import all VIPER documents -->
+    <!-- import all VIPER documents -->
 		<script type="text/javascript" src="js/fileHandler.js"></script>
+		<script type="text/javascript" src="js/model.js"></script>
 
 	</body>
 </html>

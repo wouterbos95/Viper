@@ -2,16 +2,6 @@ header;
 data;
 target;
 
-function handleFiles(files) {
-	// Check for the various File API support.
-	if (window.FileReader) {
-		// FileReader are supported.
-		getAsText(files[0]);
-	} else {
-		alert('FileReader are not supported in this browser.');
-	}
-}
-
 function getAsText(fileToRead) {
 	var reader = new FileReader();
 	// Handle errors load
@@ -23,7 +13,7 @@ function getAsText(fileToRead) {
 
 function loadHandler(event) {
 	var csv = event.target.result;
-	processData(csv);             
+	processData(csv);
 }
 
 function processData(csv) {
@@ -141,7 +131,7 @@ function selectTarget(value){
 	temp += value;
 	temp += "</b>";
 	document.getElementById("info").innerHTML = temp;
-	//drawOutput();
+	drawOutput();
 }
 
  
