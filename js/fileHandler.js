@@ -1,8 +1,8 @@
-<<<<<<< HEAD
+
 header;
 data;
 target;
-=======
+
 function handleFiles(files) {
 	// Check for the various File API support.
 	if (window.FileReader) {
@@ -12,8 +12,6 @@ function handleFiles(files) {
 		alert('FileReader are not supported in this browser.');
 	}
 }
->>>>>>> parent of 5af9d36... fix target selector
-
 function getAsText(fileToRead) {
 	var reader = new FileReader();
 	// Handle errors load
@@ -140,13 +138,11 @@ function selectTarget(value){
 	index = header.indexOf(value);
 	target = data[index];
 	data.splice(index, 1); 
-<<<<<<< HEAD
 	var temp = "Selected target: <b>";
 	temp += value;
 	temp += "</b>";
 	document.getElementById("info").innerHTML = temp;
-=======
->>>>>>> parent of 5af9d36... fix target selector
+
 	drawOutput();
 }
 

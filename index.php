@@ -58,7 +58,7 @@
     
     <!-- import all VIPER documents -->
 		<script type="text/javascript" src="js/fileHandler.js"></script>
-		<script type="text/javascript" src="js/model.js"></script>
+		<!--<script type="text/javascript" src="js/model.js"></script> -->
 
 	</body>
 </html>
