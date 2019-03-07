@@ -143,7 +143,7 @@ function selectTarget(value){
 	temp += "</b>";
 	document.getElementById("info").innerHTML = temp;
 
-	//drawOutput();
+	drawOutput();
 }
 
  
